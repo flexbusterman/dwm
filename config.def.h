@@ -193,7 +193,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return,	spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,	spawn,          {.v = termcmd } },
-	// { MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_z,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,				focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,				focusstack,     {.i = -1 } },
 	// { MODKEY|ShiftMask,            	XK_h,				incnmaster,     {.i = +1 } },
