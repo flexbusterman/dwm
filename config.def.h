@@ -65,11 +65,16 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     	key						function        argument */
-	/* flexbindings */
+
+	//  ____            _       _       
+	// / ___|  ___ _ __(_)_ __ | |_ ___ 
+	// \___ \ / __| '__| | '_ \| __/ __|
+	//  ___) | (__| |  | | |_) | |_\__ \
+	// |____/ \___|_|  |_| .__/ \__|___/
+	//                   |_|            
+	// bindings to run scripts
+	
 	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("alacritty -e dwmrebuild" ) },
-	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("alacritty -t Vifm -e vifmrun" ) },
-	{ MODKEY|ShiftMask,             	XK_period,	  spawn,					SHCMD("bravestart" ) },
-	{ MODKEY|ShiftMask|ControlMask, 	XK_period,	  spawn,					SHCMD("brave https://www.youtube.com" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect 74:5C:4B:D2:86:F7")},
@@ -78,28 +83,12 @@ static Key keys[] = {
   { 0,															XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
   { ShiftMask,											XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
 	{ MODKEY,													XK_grave,			spawn,					SHCMD("dmenuunicode") },
-	{ MODKEY,													XK_e,					spawn,					SHCMD("alacritty -t NeoMutt -e neomutt") },
-	{ MODKEY,													XK_t,					spawn,					SHCMD("alacritty -t Htop -e htop") },
-	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
-	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
-	// { MODKEY,     XK_a,   togglegaps, {0} },
-	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim -c VimwikiIndex") },
 	{ MODKEY,													XK_m,					spawn,					SHCMD("mullvadconnect") },
 	{ MODKEY|ShiftMask,								XK_m,					spawn,					SHCMD("mullvaddisconnect") },
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("mailsync") },
-	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY,													XK_r,					spawn,					SHCMD("alacritty -t Newsboat -e newsboat") },
-  { MODKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
-	{ MODKEY|ControlMask,							XK_k,					focusmon,				{.i = +1 } },
-	{ MODKEY|ControlMask,							XK_h,					tagmon,					{.i = -1 } },
-	{ MODKEY|ControlMask,							XK_l,					tagmon,					{.i = +1 } },
 	{ MODKEY,													XK_F1,				spawn,					SHCMD("jackrun") },
 	{ MODKEY,													XK_F2,				spawn,					SHCMD("jackkill") },
 	{ MODKEY,													XK_F3,				spawn,					SHCMD("displayselect") },
-	{ MODKEY,													XK_F4,				spawn,					SHCMD("alacritty -t PulseMixer -e pulsemixer") },
-	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
-	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
 	{ MODKEY,													XK_F7,				spawn,					SHCMD("td-toggle") },
 	{ MODKEY,													XK_F8,				spawn,					SHCMD("dmenumount") },
 	{ MODKEY,													XK_F9,				spawn,					SHCMD("dmenuumount") },
@@ -109,27 +98,74 @@ static Key keys[] = {
 	{ 0,						XF86XK_AudioMicMute,						spawn,			    SHCMD("amixer set Capture toggle") },
 	{ 0,						XF86XK_MonBrightnessUp,					spawn,			    SHCMD("xbacklight -inc $(bc <<< \"$(xbacklight) * 0.5 + 0.15\")") },
 	{ 0,						XF86XK_MonBrightnessDown,				spawn,			    SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },
-	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h")},
-	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY|ShiftMask|ControlMask,		XK_r,					spawn,					SHCMD("reboot")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_p,					spawn,					SHCMD("poweroff")},
 	{ MODKEY,													XK_semicolon,	spawn,					SHCMD("stream")},
-	{ MODKEY|ShiftMask,													XK_p,					spawn,					SHCMD("passmenu")},
+	{ MODKEY,													XK_p,					spawn,					SHCMD("stack -p")},
+	{ MODKEY,													XK_y,					spawn,					SHCMD("stack -y")},
+	{ MODKEY|ShiftMask,								XK_p,					spawn,					SHCMD("passmenu")},
 	{ MODKEY,													XK_Up,				spawn,					SHCMD("cpuperformance")},
 	{ MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
-	{ MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
-
-	// // Flexbindings audio and media
-	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("audacious")},
-	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("alacritty -t ncspot -e ncspot")},
 	{ ControlMask|ShiftMask,					XK_j,					spawn,					SHCMD("musicnext")},
 	{ ControlMask|ShiftMask,					XK_k,					spawn,					SHCMD("musicprev")},
 	{ ControlMask|ShiftMask,					XK_h,					spawn,					SHCMD("musicseekbackward")},
 	{ ControlMask|ShiftMask,					XK_l,					spawn,					SHCMD("musicseekforward")},
 	{ ControlMask|ShiftMask,					XK_space,			spawn,					SHCMD("musicplaypause")},
+	
+	//  _____ _   _ ___ 
+	// |_   _| | | |_ _|
+	//   | | | | | || | 
+	//   | | | |_| || | 
+	//   |_|  \___/|___|
+	//                  
+	// terminal applications
 
-	/* dwm bindings*/
+	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("alacritty -t Vifm -e vifmrun" ) },
+	{ MODKEY,													XK_e,					spawn,					SHCMD("alacritty -t NeoMutt -e neomutt") },
+	{ MODKEY,													XK_t,					spawn,					SHCMD("alacritty -t Htop -e htop") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim -c VimwikiIndex") },
+	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY,													XK_r,					spawn,					SHCMD("alacritty -t Newsboat -e newsboat") },
+	{ MODKEY,													XK_F4,				spawn,					SHCMD("alacritty -t PulseMixer -e pulsemixer") },
+	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
+	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h")},
+	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("alacritty -t ncmpcpp -e ncmpcpp")},
+	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("alacritty -t ncspot -e ncspot")},
+	{ MODKEY,													XK_s,					spawn,					SHCMD("supercollider")},
+
+	//   ____ _   _ ___ 
+	//  / ___| | | |_ _|
+	// | |  _| | | || | 
+	// | |_| | |_| || | 
+	//  \____|\___/|___|
+	// 
+	// gui applications
+
+	{ MODKEY,													XK_q,					spawn,          SHCMD("qpwgraph" ) },
+	{ MODKEY,             						XK_period,	  spawn,					SHCMD("qutebrowser" ) },
+	{ MODKEY|ShiftMask,             	XK_period,	  spawn,					SHCMD("bravestart" ) },
+	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
+	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
+	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("audacious")},
+
+	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
+	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
+	// { MODKEY,     XK_a,   togglegaps, {0} },
+  { MODKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
+	{ MODKEY|ControlMask,							XK_k,					focusmon,				{.i = +1 } },
+	{ MODKEY|ControlMask,							XK_h,					tagmon,					{.i = -1 } },
+	{ MODKEY|ControlMask,							XK_l,					tagmon,					{.i = +1 } },
+	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
+
+//  ______        ____  __ 
+// |  _ \ \      / /  \/  |
+// | | | \ \ /\ / /| |\/| |
+// | |_| |\ V  V / | |  | |
+// |____/  \_/\_/  |_|  |_|
+//                         
+// dwm bindings
+
 	{ MODKEY,                       XK_Return,	spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,	spawn,          {.v = termcmd } },
 	// { MODKEY,                       XK_b,      togglebar,      {0} },
