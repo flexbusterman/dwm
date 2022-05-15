@@ -115,7 +115,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,		XK_r,					spawn,					SHCMD("reboot")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_p,					spawn,					SHCMD("poweroff")},
 	{ MODKEY,													XK_semicolon,	spawn,					SHCMD("stream")},
-	{ MODKEY,													XK_p,					spawn,					SHCMD("passmenu")},
+	{ MODKEY|ShiftMask,													XK_p,					spawn,					SHCMD("passmenu")},
 	{ MODKEY,													XK_Up,				spawn,					SHCMD("cpuperformance")},
 	{ MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
 	{ MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
