@@ -184,7 +184,6 @@ static Key keys[] = {
 
 	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
 	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
-	// { MODKEY,     XK_a,   togglegaps, {0} },
   { MODKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
 	{ MODKEY|ControlMask,							XK_k,					focusmon,				{.i = +1 } },
 	{ MODKEY|ControlMask,							XK_h,					tagmon,					{.i = -1 } },
