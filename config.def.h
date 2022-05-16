@@ -17,15 +17,18 @@ static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = { "Px437 IBM BIOS:size=7:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
+static const char col_black[]       = "#000000";
 static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#000000";
-static const char col_gray3[]       = "#eeeeee";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#dddddd";
 static const char col_gray4[]       = "#ffffff";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan1[]       = "#005577";
+static const char col_cyan2[]       = "#8be9fd";
+static const char col_purple[]       = "#6272a4";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray3, col_black, col_black },
+	[SchemeSel]  = { col_gray4, col_purple, col_purple },
 };
 
 /* tagging */
@@ -83,7 +86,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -99,7 +102,7 @@ static Key keys[] = {
 	//                   |_|            
 	// bindings to run scripts
 	
-	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("alacritty -e dwmrebuild" ) },
+	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect 74:5C:4B:D2:86:F7")},
@@ -147,17 +150,17 @@ static Key keys[] = {
 	//                  
 	// terminal applications
 
-	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("alacritty -t Vifm -e vifmrun" ) },
-	{ MODKEY,													XK_e,					spawn,					SHCMD("alacritty -t NeoMutt -e neomutt") },
-	{ MODKEY,													XK_t,					spawn,					SHCMD("alacritty -t Htop -e htop") },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim -c VimwikiIndex") },
-	{ MODKEY,													XK_r,					spawn,					SHCMD("alacritty -t Newsboat -e newsboat") },
-	{ MODKEY,													XK_F4,				spawn,					SHCMD("alacritty -t PulseMixer -e pulsemixer") },
+	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e vifmrun" ) },
+	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
+	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
+	{ MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
+	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
-	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h")},
-	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("alacritty -t ncmpcpp -e ncmpcpp")},
-	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("alacritty -t ncspot -e ncspot")},
+	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
+	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
+	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
 	{ MODKEY,													XK_s,					spawn,					SHCMD("supercollider")},
 
 	//   ____ _   _ ___ 
@@ -187,8 +190,8 @@ static Key keys[] = {
 	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
   { MODKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
 	{ MODKEY|ControlMask,							XK_k,					focusmon,				{.i = +1 } },
-	{ MODKEY|ControlMask,							XK_h,					tagmon,					{.i = -1 } },
-	{ MODKEY|ControlMask,							XK_l,					tagmon,					{.i = +1 } },
+	{ MODKEY|ShiftMask|ControlMask,		XK_j,					tagmon,					{.i = -1 } },
+	{ MODKEY|ShiftMask|ControlMask,		XK_k,					tagmon,					{.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return,	spawn,          {.v = dmenucmd } },
