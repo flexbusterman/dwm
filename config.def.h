@@ -132,7 +132,7 @@ static Key keys[] = {
 	{ 0,						XF86XK_MonBrightnessDown,				spawn,			    SHCMD("xbacklight -dec $(bc <<< \"$(xbacklight) * 0.5\")") },
 	{ MODKEY|ShiftMask|ControlMask,		XK_r,					spawn,					SHCMD("reboot")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_p,					spawn,					SHCMD("poweroff")},
-	{ MODKEY,													XK_semicolon,	spawn,					SHCMD("clipstram")},
+	{ MODKEY,													XK_semicolon,	spawn,					SHCMD("clipstream")},
 	{ MODKEY|ShiftMask,								XK_semicolon,	spawn,					SHCMD("clipdownload")},
 	{ MODKEY,													XK_p,					spawn,					SHCMD("stack -p")},
 	{ MODKEY,													XK_y,					spawn,					SHCMD("stack -y")},
