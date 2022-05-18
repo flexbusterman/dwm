@@ -155,6 +155,7 @@ static Key keys[] = {
 
 	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e vifmrun" ) },
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
+	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t scratchpad -g 80x45 -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
@@ -191,10 +192,10 @@ static Key keys[] = {
 
 	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
 	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
-  { MODKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
-	{ MODKEY|ControlMask,							XK_k,					focusmon,				{.i = +1 } },
-	{ MODKEY|ShiftMask|ControlMask,		XK_j,					tagmon,					{.i = -1 } },
-	{ MODKEY|ShiftMask|ControlMask,		XK_k,					tagmon,					{.i = +1 } },
+  { MODKEY|ControlMask,							XK_h,					focusmon,				{.i = -1 } },
+	{ MODKEY|ControlMask,							XK_l,					focusmon,				{.i = +1 } },
+	{ MODKEY|ShiftMask|ControlMask,		XK_h,					tagmon,					{.i = -1 } },
+	{ MODKEY|ShiftMask|ControlMask,		XK_l,					tagmon,					{.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
