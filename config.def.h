@@ -15,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]          = { "Fixedsys Excelsior:size=12:antialias=false:autohint=true"};
+static const char *fonts[]          = { "PxPlus IBM VGA 9x16:size=12:antialias=false:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_black[]       = "#000000";
 static const char col_gray1[]       = "#222222";
@@ -86,7 +86,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
 
@@ -105,7 +105,7 @@ static Key keys[] = {
 	//                   |_|            
 	// bindings to run scripts
 	
-	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
+	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("alacritty -e dwmrebuild" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect 74:5C:4B:D2:86:F7")},
@@ -153,18 +153,18 @@ static Key keys[] = {
 	//                  
 	// terminal applications
 
-	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e vifmrun" ) },
-	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
-	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
-	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
+	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("alacritty -t Vifm -e vifmrun" ) },
+	{ MODKEY,													XK_e,					spawn,					SHCMD("alacritty -t NeoMutt -e neomutt") },
+	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("alacritty -t typingtest -e tt -theme dracula") },
+	{ MODKEY,													XK_t,					spawn,					SHCMD("alacritty -t Htop -e htop") },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t scratchpad -g 80x45 -e nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
-	{ MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
-	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer") },
+	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -t VimWiki -e nvim -c VimwikiIndex") },
+	{ MODKEY,													XK_r,					spawn,					SHCMD("alacritty -t Newsboat -e newsboat") },
+	{ MODKEY,													XK_F4,				spawn,					SHCMD("alacritty -t PulseMixer -e pulsemixer") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
-	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
-	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
-	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
+	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; alacritty -t DWMconfig -e nvim config.def.h")},
+	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("alacritty -t ncmpcpp -e ncmpcpp")},
+	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("alacritty -t ncspot -e ncspot")},
 	{ MODKEY,													XK_s,					spawn,					SHCMD("supercollider")},
 
 	//   ____ _   _ ___ 
