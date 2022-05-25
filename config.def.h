@@ -106,6 +106,7 @@ static Key keys[] = {
 	// bindings to run scripts
 	
 	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
+	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("calc" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect 74:5C:4B:D2:86:F7")},
