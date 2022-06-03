@@ -50,7 +50,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.58; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -161,7 +161,8 @@ static Key keys[] = {
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t scratchpad -g 80x45 -e nvim ~/Dropbox/NOTES/TODO.md") },
+	// { MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t scratchpad -g 80x45 -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
 	{ MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
 	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer") },
@@ -209,7 +210,7 @@ static Key keys[] = {
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
 	{ MODKEY,            						  XK_a,    		  togglegaps,     {0} },
 	{ MODKEY,            						  XK_x,    		  togglegaps,     {0} },
-	// { MODKEY|ShiftMask,  	  				XK_a,   		   defaultgaps,    {0} },
+	{ MODKEY|ShiftMask,  	  				XK_a,   		   defaultgaps,    {0} },
 	{ MODKEY,               	        XK_j,					focusstack,     {.i = +1 } },
 	{ MODKEY,               	        XK_k,					focusstack,     {.i = -1 } },
 	// { MODKEY|ShiftMask,  	         	XK_h,					incnmaster,     {.i = +1 } },
