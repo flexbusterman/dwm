@@ -148,6 +148,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,					XK_h,					spawn,					SHCMD("musicseekbackward")},
 	{ ControlMask|ShiftMask,					XK_l,					spawn,					SHCMD("musicseekforward")},
 	{ ControlMask|ShiftMask,					XK_space,			spawn,					SHCMD("musicplaypause")},
+	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
 	
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
