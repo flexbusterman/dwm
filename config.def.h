@@ -91,8 +91,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
-
+// static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
+static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45", "-e", "nvim", "/home/flex/Dropbox/NOTES/TODO.md", NULL};
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -107,7 +107,7 @@ static Key keys[] = {
 	// |____/ \___|_|  |_| .__/ \__|___/
 	//                   |_|            
 	// bindings to run scripts
-	
+
 	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("calc" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
@@ -149,7 +149,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,					XK_l,					spawn,					SHCMD("musicseekforward")},
 	{ ControlMask|ShiftMask,					XK_space,			spawn,					SHCMD("musicplaypause")},
 	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
-	
+
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
 	//   | | | | | || | 
@@ -162,7 +162,6 @@ static Key keys[] = {
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
-	// { MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t scratchpad -g 80x45 -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
 	{ MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
