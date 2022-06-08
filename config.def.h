@@ -151,6 +151,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,					XK_space,			spawn,					SHCMD("musicplaypause")},
 	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
 	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
+	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/; dev $(ls -d */ | dmenu)")},
 
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
