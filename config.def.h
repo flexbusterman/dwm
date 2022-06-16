@@ -174,7 +174,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
 	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
 	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
-	{ MODKEY,													XK_s,					spawn,					SHCMD("supercollider")},
+	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e supercollider")},
 
 	//   ____ _   _ ___ 
 	//  / ___| | | |_ _|
@@ -209,7 +209,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,          {.v = termcmd } },
-	{ 0,  			             	        XK_grave,		  togglescratch,  {.v = scratchpadcmd } },
+	{ 0,		  	             	        XK_grave,		  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
 	{ MODKEY,            						  XK_a,    		  togglegaps,     {0} },
