@@ -113,7 +113,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_equal,			spawn,          SHCMD("calc" ) },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
-	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\"")},
+	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect 74:5C:4B:D2:86:F7")},
 	{ MODKEY|ShiftMask,								XK_b,					spawn,					SHCMD("bluetoothctl disconnect 74:5C:4B:D2:86:F7")},
 	{ MODKEY,													XK_f,					togglefullscr,  {0} },
