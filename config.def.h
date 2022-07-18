@@ -152,6 +152,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,					XK_space,			spawn,					SHCMD("musicplaypause")},
 	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
 	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
+	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e vimshortcuts")},
 	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/; dev $(ls -d */ | dmenu)")},
 
 	//  _____ _   _ ___ 
@@ -166,9 +167,9 @@ static Key keys[] = {
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
-	// { MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
-	{ MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
+	// { MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
 	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
@@ -190,6 +191,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("audacious")},
+	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
 
 //  ______        ____  __ 
 // |  _ \ \      / /  \/  |
@@ -209,7 +211,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,          {.v = termcmd } },
-	{ MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
+	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
 	{ MODKEY,            						  XK_a,    		  togglegaps,     {0} },
