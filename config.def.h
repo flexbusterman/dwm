@@ -154,6 +154,7 @@ static Key keys[] = {
 	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
 	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e vimshortcuts")},
 	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/; dev $(ls -d */ | dmenu)")},
+	{ MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
 
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
@@ -215,7 +216,7 @@ static Key keys[] = {
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
 	{ MODKEY,            						  XK_a,    		  togglegaps,     {0} },
-	{ MODKEY,            						  XK_x,    		  togglegaps,     {0} },
+	{ MODKEY,            						  XK_g,    		  togglegaps,     {0} },
 	{ MODKEY|ShiftMask,  	  				XK_a,   		   defaultgaps,    {0} },
 	{ MODKEY,               	        XK_j,					focusstack,     {.i = +1 } },
 	{ MODKEY,               	        XK_k,					focusstack,     {.i = -1 } },
