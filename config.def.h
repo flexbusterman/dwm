@@ -46,6 +46,7 @@ static const Rule rules[] = {
 	{ NULL,				NULL,       "Timer",		1 << 8,       0,           -1 },
 	{ NULL,				NULL,       "Notes",		1 << 1,       0,           -1 },
 	{ NULL,				NULL,       "Git",			1 << 8,       0,           -1 },
+	{ "mpv",			NULL,       NULL,				999999999,	  0,           -1 },
 };
 
 /* layout(s) */
