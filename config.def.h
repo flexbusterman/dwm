@@ -112,7 +112,6 @@ static Key keys[] = {
 
 	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
 	{ MODKEY|ShiftMask,								XK_equal,			spawn,          SHCMD("calc" ) },
-	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect 74:5C:4B:D2:86:F7")},
@@ -167,13 +166,14 @@ static Key keys[] = {
 	// terminal applications
 
 	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e vifmrun" ) },
-	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt") },
+	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt; mailcheck") },
+	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse; calendar" ) },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
 	// { MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
-	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer") },
+	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
 	{ ControlMask|ShiftMask,				 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
