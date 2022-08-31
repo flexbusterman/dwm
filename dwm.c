@@ -747,8 +747,8 @@ createmon(void)
 	m->tagset[0] = m->tagset[1] = 1;
 	m->mfact = mfact;
 	m->nmaster = nmaster;
-	/* m->showbar = showbar; */
-	m->showbar = !showbar;
+	m->showbar = showbar;
+	/* m->showbar = !showbar; hides bar by default */
 	m->topbar = topbar;
 	m->gappih = gappih;
 	m->gappiv = gappiv;
