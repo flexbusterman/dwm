@@ -172,7 +172,7 @@ static Key keys[] = {
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
-	// { MODKEY,													XK_r,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
+	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
 	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
