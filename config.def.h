@@ -156,6 +156,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e vimshortcuts")},
 	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/; dev $(ls -d */ | dmenu)")},
 	{ MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
+	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
+	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD")},
 
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
@@ -245,7 +247,7 @@ static Key keys[] = {
 	{ MODKEY,             						XK_w,					killclient,     {0} },
 	{ MODKEY,                 	      XK_u,					setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                 	      XK_i,					setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                 	      XK_o,					setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,        	      XK_u,					setlayout,      {.v = &layouts[2]} },
 	// { MODKEY,               	        XK_space	,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,       	      XK_space,			togglefloating, {0} },
 	{ MODKEY,                 	      XK_0,					view,           {.ui = ~0 } },
