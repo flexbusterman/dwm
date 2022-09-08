@@ -157,7 +157,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/; dev $(ls -d */ | dmenu)")},
 	{ MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
 	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
-	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD")},
+	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
 
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
