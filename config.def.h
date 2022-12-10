@@ -39,14 +39,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	// { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	// { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ NULL,				NULL,       "Server",		1 << 8,       0,           -1 },
-	{ NULL,				NULL,       "Timer",		1 << 8,       0,           -1 },
-	{ NULL,				NULL,       "Notes",		1 << 1,       0,           -1 },
-	{ NULL,				NULL,       "Git",			1 << 8,       0,           -1 },
-	{ "mpv",			NULL,       NULL,				999999999,	  0,           -1 },
+	/* class      instance    title       							tags mask     isfloating   monitor */
+	// { "Gimp",     NULL,       NULL,    							   0,            1,           -1 },
+	// { "Firefox",  NULL,       NULL,    							   1 << 8,       0,           -1 },
+	{ NULL,				NULL,       "Server",									1 << 8,       0,           -1 },
+	{ NULL,				NULL,       "Timer",									1 << 8,       0,           -1 },
+	{ NULL,				NULL,       "Notes",									1 << 1,       0,           -1 },
+	{ NULL,				NULL,       "Git",										1 << 8,       0,           -1 },
+	{ "REAPER",		"REAPER",   "Reaper Keys Feedback",		0,   			    0,           -1 },
+	{ "mpv",			NULL,       NULL,											999999999,	  0,           -1 },
 };
 
 /* layout(s) */
@@ -158,6 +159,7 @@ static Key keys[] = {
 	// { MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
 	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
 	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("touchpadtoggle")},
 
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
@@ -196,7 +198,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("audacious")},
-	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
+	{ MODKEY,													XK_r,					spawn,					SHCMD("reaperstart") },
 
 //  ______        ____  __ 
 // |  _ \ \      / /  \/  |
@@ -266,7 +268,7 @@ static Key keys[] = {
 	TAGKEYS(                  	      XK_8,												7)
 	TAGKEYS(                  	      XK_9,												8)
 	// { MODKEY|ShiftMask,       	      XK_q,				quit,           {0} },
-	{ MODKEY|ShiftMask,								XK_q,				spawn,					SHCMD("killall startdwm") },
+	{ MODKEY|ShiftMask,								XK_q,				spawn,					SHCMD("killall dwmstart") },
 };
 
 /* button definitions */
