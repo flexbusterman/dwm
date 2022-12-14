@@ -160,6 +160,7 @@ static Key keys[] = {
 	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
 	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("touchpadtoggle")},
+	{ ControlMask,										XK_semicolon,	spawn,					SHCMD("xm")},
 
 	//  _____ _   _ ___ 
 	// |_   _| | | |_ _|
@@ -198,7 +199,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("audacious")},
-	{ MODKEY,													XK_r,					spawn,					SHCMD("reaperstart") },
+	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
 
 //  ______        ____  __ 
 // |  _ \ \      / /  \/  |
