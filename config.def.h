@@ -103,12 +103,12 @@ static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45",
 static Key keys[] = {
 	/* modifier                     	key						function        argument */
 
-	//  ____            _       _       
-	// / ___|  ___ _ __(_)_ __ | |_ ___ 
+	//  ____            _       _
+	// / ___|  ___ _ __(_)_ __ | |_ ___
 	// \___ \ / __| '__| | '_ \| __/ __|
 	//  ___) | (__| |  | | |_) | |_\__ \
 	// |____/ \___|_|  |_| .__/ \__|___/
-	//                   |_|            
+	//                   |_|
 	// bindings to run scripts
 
 	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
@@ -160,14 +160,14 @@ static Key keys[] = {
 	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
 	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("touchpadtoggle")},
-	{ ControlMask,										XK_semicolon,	spawn,					SHCMD("xm")},
+	// { ControlMask,										XK_semicolon,	spawn,					SHCMD("xm")},
 
-	//  _____ _   _ ___ 
+	//  _____ _   _ ___
 	// |_   _| | | |_ _|
-	//   | | | | | || | 
-	//   | | | |_| || | 
+	//   | | | | | || |
+	//   | | | |_| || |
 	//   |_|  \___/|___|
-	//                  
+	//
 	// terminal applications
 
 	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e vifmrun" ) },
@@ -185,12 +185,12 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
 	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e supercollider")},
 
-	//   ____ _   _ ___ 
+	//   ____ _   _ ___
 	//  / ___| | | |_ _|
-	// | |  _| | | || | 
-	// | |_| | |_| || | 
+	// | |  _| | | || |
+	// | |_| | |_| || |
 	//  \____|\___/|___|
-	// 
+	//
 	// gui applications
 
 	{ MODKEY,													XK_q,					spawn,          SHCMD("qpwgraph" ) },
@@ -201,12 +201,12 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("audacious")},
 	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
 
-//  ______        ____  __ 
+//  ______        ____  __
 // |  _ \ \      / /  \/  |
 // | | | \ \ /\ / /| |\/| |
 // | |_| |\ V  V / | |  | |
 // |____/  \_/\_/  |_|  |_|
-//                         
+//
 // dwm bindings
 
 	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
