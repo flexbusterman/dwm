@@ -200,7 +200,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,  	XK_period,	  spawn,					SHCMD("bravestart" ) },
 	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
-	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("audacious")},
+	{ ShiftMask|ControlMask,				 	XK_Return,		spawn,					SHCMD("audacious")},
 	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
 
 //  ______        ____  __
