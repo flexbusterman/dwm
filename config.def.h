@@ -185,7 +185,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
 	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
-	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e supercollider")},
+	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e tmuxscstart")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
