@@ -186,6 +186,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
 	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
 	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e tmuxscstart")},
+	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
