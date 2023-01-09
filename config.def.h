@@ -172,20 +172,21 @@ static Key keys[] = {
 	//
 	// terminal applications
 
-	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e vifmrun" ) },
+	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e tmuxsession Vifm vifmrun" ) },
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse; calendar" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
 	{ MODKEY,													XK_t,					spawn,					{.v = termcmd } },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
+	// { MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("st -t TODO -e tmuxsession TODO 'cd ~/Dropbox/NOTES/; nvim ~/Dropbox/NOTES/TODO.md'") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
 	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
 	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -t PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
-	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e tmuxscstart")},
+	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
 	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
 
 	//   ____ _   _ ___
@@ -222,7 +223,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("st -t Tmux -e tmuxsession") },
+	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("st -t Tmux -e tmuxsession Tmux") },
 	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
