@@ -177,7 +177,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse; calendar" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
-	{ MODKEY,													XK_t,					spawn,					SHCMD("st -t Tmux -e tmuxsession") },
+	{ MODKEY,													XK_t,					spawn,					{.v = termcmd } },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t VimWiki -e nvim -c VimwikiIndex") },
 	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("st -t Newsboat -e newsboat") },
@@ -185,7 +185,6 @@ static Key keys[] = {
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -t DWMconfig -e nvim config.def.h")},
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -t ncmpcpp -e ncmpcpp")},
-	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("st -t ncspot -e ncspot")},
 	{ MODKEY,													XK_s,					spawn,					SHCMD("st -t SuperCollider -e tmuxscstart")},
 	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
 
@@ -204,6 +203,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
 	{ ShiftMask|ControlMask,				 	XK_Return,		spawn,					SHCMD("audacious")},
 	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
+	{ MODKEY|ControlMask|ShiftMask,		XK_Return,		spawn,					SHCMD("tidal-hifi")},
 
 //  ______        ____  __
 // |  _ \ \      / /  \/  |
@@ -222,7 +222,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("st -t Tmux -e tmuxsession") },
 	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
