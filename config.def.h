@@ -173,6 +173,7 @@ static Key keys[] = {
 	// terminal applications
 
 	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("st -t Vifm -e tmuxsession Vifm vifmrun" ) },
+	{ MODKEY|ShiftMask|ControlMask,   XK_k,					spawn,          SHCMD("tmux kill-server" ) },
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse; calendar" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
