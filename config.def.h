@@ -15,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]          = { "PxPlus IBM VGA 9x16:size=12:antialias=true:autohint=true"};
+static const char *fonts[]          = { "FiraCode Nerd Font Mono:style=semibold:size=10:antialias=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_black[]       = "#000000";
 static const char col_gray1[]       = "#222222";
@@ -112,7 +112,7 @@ static Key keys[] = {
 	// bindings to run scripts
 
 	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
-	{ MODKEY|ShiftMask,								XK_equal,			spawn,          SHCMD("calc" ) },
+	{ MODKEY|ShiftMask,								XK_equal,			spawn,          SHCMD("calculate" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect C8:7B:23:C8:34:32")},
@@ -176,7 +176,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,   XK_k,					spawn,          SHCMD("tmux kill-server" ) },
 	{ MODKEY,													XK_e,					spawn,					SHCMD("st -t NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("st -t Calcurse -e calcurse; calendar" ) },
-	{ MODKEY|ShiftMask|ControlMask,		XK_t,					spawn,					SHCMD("st -t typingtest -e tt -theme dracula") },
+	{ MODKEY|ShiftMask|ControlMask,		XK_t,					spawn,					SHCMD("st -t typingtest -e tt -notheme") },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("st -t Htop -e htop") },
 	{ MODKEY,													XK_t,					spawn,					{.v = termcmd } },
 	// { MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -t TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
