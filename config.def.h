@@ -172,7 +172,7 @@ static Key keys[] = {
 	//
 	// terminal applications
 
-	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("kitty -T Vifm tmuxsession Vifm vifmrun" ) },
+	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("kitty -T Vifm vifmrun" ) },
 	{ MODKEY|ShiftMask|ControlMask,   XK_k,					spawn,          SHCMD("tmux kill-server" ) },
 	{ MODKEY,													XK_e,					spawn,					SHCMD("kitty -T NeoMutt neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("kitty -T Calcurse calcurse; calendar" ) },
@@ -180,7 +180,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("kitty -T Htop htop") },
 	{ MODKEY,													XK_t,					spawn,					{.v = termcmd } },
 	// { MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; kitty -T TODO nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("kitty -T TODO tmuxsession TODO 'cd ~/Dropbox/NOTES/; nvim ~/Dropbox/NOTES/TODO.md'") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("kitty -T TODO 'cd ~/Dropbox/NOTES/; nvim ~/Dropbox/NOTES/TODO.md'") },
 	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; kitty -T VimWiki nvim -c VimwikiIndex") },
 	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("kitty -T Newsboat newsboat") },
 	{ MODKEY,													XK_F4,				spawn,					SHCMD("kitty -T PulseMixer pulsemixer; kill -44 $(pidof dwmblocks)") },
@@ -224,7 +224,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("kitty -T Tmux tmuxsession Tmux") },
+	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
 	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
