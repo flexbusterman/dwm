@@ -163,6 +163,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("touchpadtoggle")},
 	// { ControlMask,										XK_semicolon,	spawn,					SHCMD("xm")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_1,					spawn,					SHCMD("timers 60")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_2,					spawn,					SHCMD("timers 30")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_3,					spawn,					SHCMD("timers 20")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_4,					spawn,					SHCMD("timers 15")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_0,					spawn,					SHCMD("notify-send 'Killing active timers'; killall timers")},
 
 	//  _____ _   _ ___
 	// |_   _| | | |_ _|
