@@ -142,6 +142,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,		XK_p,					spawn,					SHCMD("poweroff")},
 	{ MODKEY,													XK_semicolon,	spawn,					SHCMD("clipstream")},
 	{ MODKEY|ShiftMask,								XK_semicolon,	spawn,					SHCMD("clipdownload")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_semicolon,	spawn,					SHCMD("clipdownload -a")},
 	{ MODKEY,													XK_p,					spawn,					SHCMD("stack -p")},
 	{ MODKEY,													XK_y,					spawn,					SHCMD("stack -y")},
 	{ MODKEY|ShiftMask,								XK_p,					spawn,					SHCMD("passmenu")},
