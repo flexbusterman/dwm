@@ -169,6 +169,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,		XK_3,					spawn,					SHCMD("timers 20")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_4,					spawn,					SHCMD("timers 15")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_0,					spawn,					SHCMD("notify-send 'Killing active timers'; killall timers")},
+	{ MODKEY,													XK_c,					spawn,          SHCMD("reaperconnect" ) },
 
 	//  _____ _   _ ___
 	// |_   _| | | |_ _|
