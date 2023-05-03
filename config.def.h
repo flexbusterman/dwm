@@ -205,7 +205,7 @@ static Key keys[] = {
 
 	{ MODKEY,													XK_q,					spawn,          SHCMD("qpwgraph" ) },
 	{ MODKEY|ShiftMask,             	XK_period,	  spawn,					SHCMD("qutebrowser -R" ) },
-	{ MODKEY|ShiftMask|ControlMask,  	XK_period,	  spawn,					SHCMD("firefoxstart" ) },
+	{ MODKEY|ShiftMask|ControlMask,  	XK_period,	  spawn,					SHCMD("bravestart" ) },
 	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
 	{ ShiftMask|ControlMask,				 	XK_Return,		spawn,					SHCMD("audacious")},
@@ -229,7 +229,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
+	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("kitty -T Tmux tmux attach -t main") },
+	{ Mod4Mask,						     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
 	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
