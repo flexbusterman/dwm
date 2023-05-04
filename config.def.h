@@ -229,7 +229,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("kitty -T Tmux tmux attach -t main") },
+	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmux send-keys -t main clear Enter && kitty -T Tmux tmux new-session -At main") },
 	{ Mod4Mask,						     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
 	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
