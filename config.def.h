@@ -180,7 +180,7 @@ static Key keys[] = {
 	// terminal applications
 
 	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("kitty -T Vifm vifmrun" ) },
-	{ MODKEY|ShiftMask|ControlMask,   XK_k,					spawn,          SHCMD("tmux kill-server" ) },
+	{ MODKEY,												  XK_x,					spawn,          SHCMD("tmux kill-server" ) },
 	{ MODKEY,													XK_e,					spawn,					SHCMD("kitty -T NeoMutt neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("qutebrowser https://calendar.google.com/calendar/r/month" ) },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("kitty -T typingtest tt -notheme") },
