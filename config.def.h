@@ -229,7 +229,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmuxmainclear") },
+	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmuxmain") },
 	{ Mod4Mask|ShiftMask,	     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
 	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
