@@ -180,7 +180,7 @@ static Key keys[] = {
 	// terminal applications
 
 	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("kitty -T Vifm vifmrun" ) },
-	{ MODKEY,												  XK_x,					spawn,          SHCMD("tmux kill-server" ) },
+	/* { MODKEY,												  XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
 	{ MODKEY,													XK_e,					spawn,					SHCMD("kitty -T NeoMutt neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("qutebrowser https://calendar.google.com/calendar/r/month" ) },
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("kitty -T typingtest tt -notheme") },
@@ -229,10 +229,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmuxmain") },
-	{ Mod4Mask|ShiftMask,	     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
-	// { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,               	        XK_a,    		  togglebar,      {0} },
+	/* { MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmuxmain") }, */
+	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") }, // { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } }, { MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
 	{ MODKEY,            						  XK_a,    		  togglegaps,     {0} },
 	{ MODKEY,            						  XK_g,    		  togglegaps,     {0} },
