@@ -233,7 +233,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") }, // { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } }, { MODKEY,               	        XK_a,    		  togglebar,      {0} },
 	{ MODKEY,               	        XK_z,    		  togglebar,      {0} },
 	{ MODKEY,            						  XK_a,    		  togglegaps,     {0} },
-	{ MODKEY,            						  XK_g,    		  togglegaps,     {0} },
 	{ MODKEY|ShiftMask,  	  					XK_a,					defaultgaps,    {0} },
 	{ MODKEY,               	        XK_j,					focusstack,     {.i = +1 } },
 	{ MODKEY,               	        XK_k,					focusstack,     {.i = -1 } },
