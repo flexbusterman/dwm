@@ -92,7 +92,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char scratchpadname[] = "scratchpad";
 // static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
 static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45", "-e", "nvim", "/home/flex/Dropbox/NOTES/TODO.md", NULL};
@@ -148,8 +148,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_p,					spawn,					SHCMD("passmenu")},
 	{ MODKEY,													XK_Up,				spawn,					SHCMD("cpuperformance")},
 	{ MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
-	{ MODKEY|ShiftMask,               XK_Up,				spawn,					SHCMD("turbo \" \" 0.025")},
-	{ MODKEY|ShiftMask,               XK_Down,			spawn,					SHCMD("killall turbo")},
+	/* { MODKEY|ShiftMask,               XK_Up,				spawn,					SHCMD("turbo \" \" 0.025")}, */
+	/* { MODKEY|ShiftMask,               XK_Down,			spawn,					SHCMD("killall turbo")}, */
 	{ MODKEY|ControlMask,							XK_j,					spawn,					SHCMD("musicnext")},
 	{ MODKEY|ControlMask,							XK_k,					spawn,					SHCMD("musicprev")},
 	{ MODKEY|ControlMask,							XK_h,					spawn,					SHCMD("musicseekbackward")},
@@ -170,6 +170,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask,		XK_4,					spawn,					SHCMD("timers 15")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_0,					spawn,					SHCMD("notify-send 'Killing active timers'; killall timers")},
 	{ MODKEY,													XK_c,					spawn,          SHCMD("reaperconnect" ) },
+	{ MODKEY|ControlMask,							XK_d,					spawn,          SHCMD("mpc --host ~/.mpd/socket clear" ) },
 
 	//  _____ _   _ ___
 	// |_   _| | | |_ _|
