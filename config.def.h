@@ -232,6 +232,7 @@ static Key keys[] = {
   { WINKEY,													XK_k,					focusmon,				{.i = -1 } },
 	{ WINKEY|ShiftMask,								XK_j,					tagmon,					{.i = +1 } },
 	{ WINKEY|ShiftMask,								XK_k,					tagmon,					{.i = -1 } },
+	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmuxmain") }, */
