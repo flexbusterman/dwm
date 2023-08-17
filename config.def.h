@@ -79,7 +79,9 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod1Mask  // Alt key
+#define WINKEY Mod4Mask  // Super/Windows key
+
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -132,6 +134,9 @@ static Key keys[] = {
 	{ MODKEY,													XK_F7,				spawn,					SHCMD("td-toggle") },
 	{ MODKEY,													XK_F8,				spawn,					SHCMD("mounter") },
 	{ MODKEY,													XK_F9,				spawn,					SHCMD("unmounter") },
+	{ MODKEY,													XK_F10,				spawn,					SHCMD("campreview") },
+	{ MODKEY,													XK_F11,				spawn,					SHCMD("dmenurecord") },
+	{ MODKEY,													XK_F12,				spawn,					SHCMD("killrecording") },
 	{ 0,						XF86XK_AudioMute,								spawn,			    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0,						XF86XK_AudioRaiseVolume,				spawn,			    SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,						XF86XK_AudioLowerVolume,				spawn,			    SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
@@ -223,11 +228,10 @@ static Key keys[] = {
 
 	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
 	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
-	{ MODKEY|ControlMask,							XK_j,					focusmon,				{.i = +1 } },
-  { MODKEY|ControlMask,							XK_k,					focusmon,				{.i = -1 } },
-	{ MODKEY|ShiftMask|ControlMask,		XK_j,					tagmon,					{.i = +1 } },
-	{ MODKEY|ShiftMask|ControlMask,		XK_k,					tagmon,					{.i = -1 } },
-	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
+	{ WINKEY,													XK_j,					focusmon,				{.i = +1 } },
+  { WINKEY,													XK_k,					focusmon,				{.i = -1 } },
+	{ WINKEY|ShiftMask,								XK_j,					tagmon,					{.i = +1 } },
+	{ WINKEY|ShiftMask,								XK_k,					tagmon,					{.i = -1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY|ShiftMask,     	        XK_Return,		spawn,   	      SHCMD("tmuxmain") }, */
