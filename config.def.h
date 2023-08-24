@@ -192,7 +192,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("kitty -T typingtest tt -notheme") },
 	{ MODKEY,													XK_t,					spawn,					SHCMD("kitty -T Htop htop") },
 	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; kitty -T TODO nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; kitty -T VimWiki nvim -c VimwikiIndex") },
+	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("kitty ~/.local/bin/fzfnotes") },
 	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("kitty -T Newsboat newsboat") },
 	{ MODKEY,													XK_F4,				spawn,					SHCMD("kitty -T PulseMixer pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
