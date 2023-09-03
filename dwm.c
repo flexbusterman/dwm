@@ -1322,12 +1322,31 @@ manage(Window w, XWindowAttributes *wa)
 		&& (c->x + (c->w / 2) < c->mon->wx + c->mon->ww)) ? bh : c->mon->my);
 	c->bw = borderpx;
 
+
+	/* selmon->tagset[selmon->seltags] &= ~scratchtag; */
+	/* if (!strcmp(c->name, scratchpadname)) { */
+	/* 	c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag; */
+	/* 	c->isfloating = True; */
+	/* 	c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2); */
+	/* 	c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2); */
+	/* } */
+
 	selmon->tagset[selmon->seltags] &= ~scratchtag;
 	if (!strcmp(c->name, scratchpadname)) {
 		c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag;
 		c->isfloating = True;
-		c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-		c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+
+		// Calculate the width and height for the scratchpad instance
+		int scratchpad_width = c->mon->ww * 0.93; // % of screen width
+		int scratchpad_height = c->mon->wh * 0.90; // % of screen height
+
+		// Calculate the x and y positions to center the scratchpad instance
+		c->x = c->mon->wx + (c->mon->ww - scratchpad_width) / 2;
+		c->y = c->mon->wy + (c->mon->wh - scratchpad_height) / 2 - 10;
+
+		// Set the width and height for the scratchpad instance
+		c->w = scratchpad_width;
+		c->h = scratchpad_height;
 	}
 
 	wc.border_width = c->bw;

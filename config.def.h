@@ -97,7 +97,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char scratchpadname[] = "scratchpad";
 // static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
-static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45", "-e", "nvim", "/home/flex/Dropbox/NOTES/TODO.md", NULL};
+/* static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45", "-e", "nvim", "/home/flex/Dropbox/NOTES/TODO.md", NULL}; */
+static const char *scratchpadcmd[] = {"scratchpad", NULL};
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -123,7 +124,7 @@ static Key keys[] = {
 	{ MODKEY,													XK_f,					togglefullscr,  {0} },
   { 0,															XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
   { ShiftMask,											XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
-	{ MODKEY,													XK_grave,			spawn,					SHCMD("dmenuunicode") },
+	{ MODKEY|ShiftMask,								XK_grave,			spawn,					SHCMD("dmenuunicode") },
 	{ MODKEY,													XK_m,					spawn,					SHCMD("mullvadconnect") },
 	{ MODKEY|ShiftMask,								XK_m,					spawn,					SHCMD("mullvaddisconnect") },
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("mailsync") },
@@ -234,8 +235,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
-	{ MODKEY,						     	        XK_period,		spawn,   	      SHCMD("tmuxmain") },
-	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") }, // { MODKEY,							  	        XK_n,				  togglescratch,  {.v = scratchpadcmd } }, { MODKEY,               	        XK_a,    		  togglebar,      {0} },
+	/* { MODKEY,						     	        XK_period,		spawn,   	      SHCMD("tmuxmain") }, */
+	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
+	{ MODKEY,							  	        XK_grave,		  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask, 							XK_z,    		  togglebar,      {0} },
 	{ MODKEY|ShiftMask,         			XK_a,    		  togglegaps,     {0} },
 	/* { MODKEY|ShiftMask,  	  					XK_a,					defaultgaps,    {0} }, */
