@@ -94,11 +94,12 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 // static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
 /* static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45", "-e", "nvim", "/home/flex/Dropbox/NOTES/TODO.md", NULL}; */
 static const char *scratchpadcmd[] = {"scratchpad", NULL};
+/* static const char *scratchpadcmd[] = {"scratchpad", NULL}; */
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -162,8 +163,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,							XK_l,					spawn,					SHCMD("musicseekforward")},
 	{ MODKEY|ControlMask,							XK_space,			spawn,					SHCMD("musicplaypause")},
 	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
-	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("kitty ~/.local/bin/fzfvim")},
-	{ MODKEY,													XK_slash,			spawn,					SHCMD("kitty ~/.local/bin/shortcuts")},
+	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
+	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/shortcuts")},
 	// { MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
 	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
 	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
@@ -185,21 +186,23 @@ static Key keys[] = {
 	//
 	// terminal applications
 
-	{ MODKEY|ShiftMask,             	XK_comma,			spawn,          SHCMD("kitty -T Vifm vifmrun" ) },
+	{ MODKEY,						             	XK_comma,			spawn,          SHCMD("st -T Vifm -e vifmrun" ) },
 	/* { MODKEY,												  XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
-	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("kitty -T NeoMutt neomutt; mailcheck") },
+	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("st -T NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("qutebrowser https://calendar.google.com/calendar/r/month" ) },
-	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("kitty -T typingtest tt -notheme") },
-	{ MODKEY,													XK_t,					spawn,					SHCMD("kitty -T Htop htop") },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; kitty -T TODO nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("kitty ~/.local/bin/fzfnotes") },
-	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("kitty -T Newsboat newsboat") },
-	{ MODKEY,													XK_F4,				spawn,					SHCMD("kitty -T PulseMixer pulsemixer; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ControlMask|ShiftMask,		XK_t,					spawn,					SHCMD("st -T typingtest -e tt -notheme") },
+	{ MODKEY|ShiftMask,								XK_h,					spawn,					SHCMD("st -T Htop -e htop") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -T TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("st -e ~/.local/bin/fzfnotes") },
+	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("st -T Newsboat -e newsboat") },
+	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -T PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
-	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/dwm/; kitty -T DWMconfig nvim config.def.h")},
-	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("kitty -T ncmpcpp ncmpcpp")},
-	{ MODKEY,													XK_s,					spawn,					SHCMD("kitty -T SuperCollider tmuxsession SuperCollider 'supercollider'")},
+	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h")},
+	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -T ncmpcpp -e ncmpcpp")},
+	{ MODKEY,													XK_s,					spawn,					SHCMD("st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
 	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
+	{ MODKEY,													XK_t,					spawn,					SHCMD("st -T TidalCycles -e tidalcycles")},
+	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("tidalkill")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
@@ -210,7 +213,8 @@ static Key keys[] = {
 	// gui applications
 
 	{ MODKEY,													XK_q,					spawn,          SHCMD("qpwgraph" ) },
-	{ MODKEY|ShiftMask,             	XK_period,	  spawn,					SHCMD("qutebrowser -R" ) },
+	{ MODKEY,						             	XK_period,	  spawn,					SHCMD("qutebrowser -R" ) },
+	{ MODKEY|ShiftMask, 						 	XK_period,	  spawn,					SHCMD("firefox" ) },
 	{ MODKEY|ShiftMask|ControlMask,  	XK_period,	  spawn,					SHCMD("bravestart" ) },
 	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
@@ -236,7 +240,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY,						     	        XK_period,		spawn,   	      SHCMD("tmuxmain") }, */
-	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("kitty -T Kitty") },
+	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("st") },
 	{ MODKEY,							  	        XK_grave,		  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask, 							XK_z,    		  togglebar,      {0} },
 	{ MODKEY|ShiftMask,         			XK_a,    		  togglegaps,     {0} },
