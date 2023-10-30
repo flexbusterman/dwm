@@ -216,7 +216,7 @@ static Key keys[] = {
 	{ MODKEY,						             	XK_period,	  spawn,					SHCMD("qutebrowser -R" ) },
 	{ MODKEY|ShiftMask, 						 	XK_period,	  spawn,					SHCMD("firefox" ) },
 	{ MODKEY|ShiftMask|ControlMask,  	XK_period,	  spawn,					SHCMD("bravestart" ) },
-	{ MODKEY|ShiftMask,								XK_x,					spawn,					SHCMD("xkill") },
+	{ MODKEY,													XK_x,					spawn,					SHCMD("xkill") },
 	{ MODKEY|ShiftMask,								XK_F4,				spawn,					SHCMD("pavucontrol") },
 	{ ShiftMask|ControlMask,				 	XK_Return,		spawn,					SHCMD("audacious")},
 	{ MODKEY,													XK_r,					spawn,					SHCMD("reaper") },
