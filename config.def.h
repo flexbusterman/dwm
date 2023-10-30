@@ -201,8 +201,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -T ncmpcpp -e ncmpcpp")},
 	{ MODKEY,													XK_s,					spawn,					SHCMD("st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
 	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
-	{ MODKEY,													XK_t,					spawn,					SHCMD("st -T TidalCycles -e tidalcycles")},
-	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("tidalkill")},
+	{ MODKEY,													XK_t,					spawn,					SHCMD("st -T FoxDot -e foxdot")},
+	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("foxdotkill")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
@@ -245,7 +245,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 							XK_z,    		  togglebar,      {0} },
 	{ MODKEY|ShiftMask,         			XK_a,    		  togglegaps,     {0} },
 	/* { MODKEY|ShiftMask,  	  					XK_a,					defaultgaps,    {0} }, */
-	{ MODKEY,													XK_x,					toggleborder,   {0} },
+	{ MODKEY|ShiftMask,								XK_x,					toggleborder,   {0} },
 	{ MODKEY,               	        XK_j,					focusstack,     {.i = +1 } },
 	{ MODKEY,               	        XK_k,					focusstack,     {.i = -1 } },
 	// { MODKEY|ShiftMask,  	         	XK_h,					incnmaster,     {.i = +1 } },
