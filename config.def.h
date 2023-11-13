@@ -153,8 +153,8 @@ static Key keys[] = {
 	{ MODKEY,													XK_p,					spawn,					SHCMD("stack -p")},
 	{ MODKEY,													XK_y,					spawn,					SHCMD("stack -y")},
 	{ MODKEY|ShiftMask,								XK_p,					spawn,					SHCMD("passmenu")},
-	{ MODKEY,													XK_Up,				spawn,					SHCMD("cpuperformance")},
-	{ MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
+	// { MODKEY,													XK_Up,				spawn,					SHCMD("cpuperformance")},
+	// { MODKEY,													XK_Down,			spawn,					SHCMD("cpupowersave")},
 	/* { MODKEY|ShiftMask,               XK_Up,				spawn,					SHCMD("turbo \" \" 0.025")}, */
 	/* { MODKEY|ShiftMask,               XK_Down,			spawn,					SHCMD("killall turbo")}, */
 	{ MODKEY|ControlMask,							XK_j,					spawn,					SHCMD("musicnext")},
@@ -232,10 +232,10 @@ static Key keys[] = {
 
 	{ MODKEY,													XK_equal, 	  incnmaster,     {.i = +1 } },
 	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
-	{ WINKEY,													XK_j,					focusmon,				{.i = +1 } },
-  { WINKEY,													XK_k,					focusmon,				{.i = -1 } },
-	{ WINKEY|ShiftMask,								XK_j,					tagmon,					{.i = +1 } },
-	{ WINKEY|ShiftMask,								XK_k,					tagmon,					{.i = -1 } },
+	{ MODKEY|WINKEY,									XK_k,					focusmon,				{.i = +1 } },
+  { MODKEY|WINKEY,									XK_j,					focusmon,				{.i = -1 } },
+	{ MODKEY|WINKEY|ShiftMask,				XK_k,					tagmon,					{.i = +1 } },
+	{ MODKEY|WINKEY|ShiftMask,				XK_j,					tagmon,					{.i = -1 } },
 	{ MODKEY|ShiftMask,								XK_j,					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
