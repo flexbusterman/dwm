@@ -187,6 +187,7 @@ static Key keys[] = {
 	// terminal applications
 
 	{ MODKEY,						             	XK_comma,			spawn,          SHCMD("st -T Vifm -e vifmrun" ) },
+	{ MODKEY|ShiftMask,								XK_comma,			spawn,          SHCMD("st -T Ranger -e ranger" ) },
 	/* { MODKEY,												  XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("st -T NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("qutebrowser https://calendar.google.com/calendar/r/month" ) },
@@ -202,7 +203,9 @@ static Key keys[] = {
 	{ MODKEY,													XK_s,					spawn,					SHCMD("st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
 	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
 	{ MODKEY,													XK_t,					spawn,					SHCMD("st -T FoxDot -e foxdot")},
+	// { MODKEY,													XK_t,					spawn,					SHCMD("st -T TidalCycles -e tidalcycles")},
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("foxdotkill")},
+	// { MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("tidalkill")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
