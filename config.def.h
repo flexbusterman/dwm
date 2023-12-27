@@ -186,9 +186,9 @@ static Key keys[] = {
 	//
 	// terminal applications
 
-	{ MODKEY,						             	XK_comma,			spawn,          SHCMD("st -T Vifm -e vifmrun" ) },
-	{ MODKEY|ShiftMask,								XK_comma,			spawn,          SHCMD("st -T Ranger -e ranger" ) },
-	/* { MODKEY,												  XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
+	{ MODKEY,													XK_comma,			spawn,          SHCMD("st -T Ranger -e rangerstart" ) },
+	{ MODKEY|ShiftMask,						             	XK_comma,			spawn,          SHCMD("st -T Vifm -e vifmrun" ) },
+	/* { MODKEY,											XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("st -T NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("qutebrowser https://calendar.google.com/calendar/r/month" ) },
 	{ MODKEY|ControlMask|ShiftMask,		XK_t,					spawn,					SHCMD("st -T typingtest -e tt -notheme") },
@@ -312,4 +312,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
