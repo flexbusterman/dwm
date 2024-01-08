@@ -166,8 +166,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
 	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/shortcuts")},
 	// { MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
-	{ MODKEY,													XK_o,					spawn,					SHCMD("ytfzf -D")},
-	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
+	{ MODKEY,													XK_o,					spawn,					SHCMD("fzfvideo")},
+	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D")},
+	// { MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -dD -P ~/Downloads/VIDEO/")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("touchpadtoggle")},
 	// { ControlMask,										XK_semicolon,	spawn,					SHCMD("xm")},
 	{ MODKEY|ShiftMask|ControlMask,		XK_1,					spawn,					SHCMD("timers 60")},
@@ -187,6 +188,7 @@ static Key keys[] = {
 	// terminal applications
 
 	{ MODKEY,													XK_comma,			spawn,          SHCMD("st -T Ranger -e rangerstart" ) },
+	// { MODKEY,													XK_comma,			spawn,          SHCMD("st -T Yazi -e yazi" ) },
 	{ MODKEY|ShiftMask,						             	XK_comma,			spawn,          SHCMD("st -T Vifm -e vifmrun" ) },
 	/* { MODKEY,											XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
 	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("st -T NeoMutt -e neomutt; mailcheck") },
