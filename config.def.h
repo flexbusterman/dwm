@@ -208,6 +208,7 @@ static Key keys[] = {
 	// { MODKEY,													XK_t,					spawn,					SHCMD("st -T TidalCycles -e tidalcycles")},
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("foxdotkill")},
 	// { MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("tidalkill")},
+	{ MODKEY,													XK_a,					spawn,					SHCMD("st -T fzfmusic -e fzfmusic")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
