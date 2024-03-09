@@ -123,7 +123,7 @@ static Key keys[] = {
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")},
 	{ MODKEY,                       	XK_b,					spawn,					SHCMD("bluetoothconnect $HEADPHONES")},
 	{ MODKEY|ShiftMask,								XK_b,					spawn,					SHCMD("bluetoothctl disconnect $HEADPHONES")},
-	{ MODKEY|ShiftMask|ControlMask,		XK_b,					spawn,					SHCMD("blueman-manager")},
+	{ MODKEY|ShiftMask|ControlMask,		XK_b,					spawn,					SHCMD("blueberry")},
 	{ MODKEY,													XK_f,					togglefullscr,  {0} },
   { 0,															XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
   { ShiftMask,											XK_Print,			spawn,					SHCMD("maim -f jpg -m 9 -s \"/home/flex/Pictures/SCREENSHOTS/$(date +\"%F %H_%M_%S.jpg\")\"")},
