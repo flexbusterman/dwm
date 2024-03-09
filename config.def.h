@@ -131,7 +131,7 @@ static Key keys[] = {
 	{ MODKEY,													XK_m,					spawn,					SHCMD("mullvadconnect") },
 	{ MODKEY|ShiftMask,								XK_m,					spawn,					SHCMD("mullvaddisconnect") },
 	{ MODKEY|ShiftMask|ControlMask,		XK_m,					spawn,					SHCMD("mailsync") },
-	{ MODKEY,													XK_F1,				spawn,					SHCMD("$BROWSER 'https://wiki.archlinux.org/'") },
+	{ MODKEY,													XK_F1,				spawn,					SHCMD("bindings") },
 	{ MODKEY,													XK_F2,				spawn,					SHCMD("resolution") },
 	{ MODKEY,													XK_F3,				spawn,					SHCMD("displaydefault") },
 	{ MODKEY|ShiftMask,								XK_F3,				spawn,					SHCMD("displayselect") },
