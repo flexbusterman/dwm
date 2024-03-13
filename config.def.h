@@ -164,6 +164,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,							XK_h,					spawn,					SHCMD("musicseekbackward")},
 	{ MODKEY|ControlMask,							XK_l,					spawn,					SHCMD("musicseekforward")},
 	{ MODKEY|ControlMask,							XK_space,			spawn,					SHCMD("musicplaypause")},
+	{ MODKEY|ControlMask,							XK_m,					spawn,					SHCMD("measure")},
 	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
 	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
 	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/shortcuts")},
