@@ -96,7 +96,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 // static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x40", NULL };
 /* static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x45", "-e", "nvim", "/home/flex/Dropbox/NOTES/TODO.md", NULL}; */
@@ -117,7 +117,7 @@ static Key keys[] = {
 	//                   |_|
 	// bindings to run scripts
 
-	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("st -e dwmrebuild" ) },
+	{ MODKEY|ShiftMask,								XK_r,					spawn,          SHCMD("alacritty -e dwmrebuild" ) },
 	{ MODKEY|ShiftMask,								XK_equal,			spawn,          SHCMD("calculate" ) },
 	{ MODKEY|ShiftMask|ControlMask,		XK_l,					spawn,					SHCMD("slock" ) },
 	{ MODKEY,                       	XK_d,					spawn,					SHCMD("sleep 0.2 && xdotool type --clearmodifiers \"$(date +\"%F \")\" && sleep 0.2 && xdotool keyup Alt_L Alt_R Control_L Control_R Shift_L Shift_R")},
@@ -166,8 +166,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,							XK_space,			spawn,					SHCMD("musicplaypause")},
 	{ MODKEY|ControlMask,							XK_m,					spawn,					SHCMD("measure")},
 	{ MODKEY|ShiftMask,								XK_i,					spawn,					SHCMD("xcalib -i -a")},
-	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/fzfvim")},
-	{ MODKEY,													XK_slash,			spawn,					SHCMD("st -e ~/.local/bin/shortcuts")},
+	{ MODKEY|ShiftMask,								XK_slash,			spawn,					SHCMD("alacritty -e ~/.local/bin/fzfvim")},
+	{ MODKEY,													XK_slash,			spawn,					SHCMD("alacritty -e ~/.local/bin/shortcuts")},
 	// { MODKEY,													XK_x,					spawn,					SHCMD("xcape -e 'Mode_switch=Escape'")},
 	{ MODKEY,													XK_o,					spawn,					SHCMD("fzfvideo")},
 	{ MODKEY|ShiftMask,								XK_o,					spawn,					SHCMD("ytfzf -m --mpv-opts='--ytdl-format=bestvideo[height<=480]+bestaudio/best[height<=480]' -D")},
@@ -190,29 +190,29 @@ static Key keys[] = {
 	//
 	// terminal applications
 
-	{ MODKEY,													XK_comma,			spawn,          SHCMD("st -T Ranger -e rangerstart" ) },
+	{ MODKEY,													XK_comma,			spawn,          SHCMD("alacritty -T Ranger -e rangerstart" ) },
 	// { MODKEY,													XK_comma,			spawn,          SHCMD("st -T Yazi -e yazi" ) },
-	{ MODKEY|ShiftMask,						             	XK_comma,			spawn,          SHCMD("st -T Vifm -e vifmrun" ) },
+	{ MODKEY|ShiftMask,						             	XK_comma,			spawn,          SHCMD("alacritty -T Vifm -e vifmrun" ) },
 	/* { MODKEY,											XK_x,					spawn,          SHCMD("tmux kill-server" ) }, */
-	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("st -T NeoMutt -e neomutt; mailcheck") },
+	{ MODKEY|ShiftMask,								XK_e,					spawn,					SHCMD("alacritty -T NeoMutt -e neomutt; mailcheck") },
 	{ MODKEY|ShiftMask,								XK_c,					spawn,          SHCMD("qutebrowser https://calendar.google.com/calendar/r/month" ) },
-	{ MODKEY|ControlMask|ShiftMask,		XK_t,					spawn,					SHCMD("st -T typingtest -e tt -notheme") },
+	{ MODKEY|ControlMask|ShiftMask,		XK_t,					spawn,					SHCMD("alacritty -T typingtest -e tt -notheme") },
 	// { MODKEY|ShiftMask,								XK_h,					spawn,					SHCMD("st -T Htop -e htop") },
-	{ MODKEY|ShiftMask,								XK_h,					spawn,					SHCMD("st -T Btop -e btop") },
-	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; st -T TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
-	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("st -e ~/.local/bin/fzfnotes") },
-	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("st -T Newsboat -e newsboat") },
-	{ MODKEY,													XK_F4,				spawn,					SHCMD("st -T PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,								XK_h,					spawn,					SHCMD("alacritty -T Btop -e btop") },
+	{ MODKEY,													XK_n,					spawn,					SHCMD("cd ~/Dropbox/NOTES/; alacritty -T TODO -e nvim ~/Dropbox/NOTES/TODO.md") },
+	{ MODKEY|ShiftMask,								XK_n,					spawn,					SHCMD("alacritty -e ~/.local/bin/fzfnotes") },
+	{ MODKEY|ControlMask|ShiftMask,		XK_n,					spawn,					SHCMD("alacritty -T Newsboat -e newsboat") },
+	{ MODKEY,													XK_F4,				spawn,					SHCMD("alacritty -T PulseMixer -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,													XK_F6,				spawn,					SHCMD("torwrap") },
-	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/dwm/; st -T DWMconfig -e nvim config.def.h")},
-	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("st -T ncmpcpp -e ncmpcpp")},
-	{ MODKEY,													XK_s,					spawn,					SHCMD("st -T SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
+	{ MODKEY|ShiftMask,								XK_d,					spawn,					SHCMD("cd ~/.local/src/dwm/; alacritty -T DWMconfig -e nvim config.def.h")},
+	{ MODKEY|ControlMask,						 	XK_Return,		spawn,					SHCMD("alacritty -T ncmpcpp -e ncmpcpp")},
+	{ MODKEY,													XK_s,					spawn,					SHCMD("alacritty -T SuperCollider -e tmuxsession SuperCollider 'supercollider'")},
 	{ MODKEY|ShiftMask,								XK_s,					spawn,					SHCMD("tmux kill-session -t SuperCollider")},
-	{ MODKEY,													XK_t,					spawn,					SHCMD("st -T FoxDot -e foxdot")},
+	{ MODKEY,													XK_t,					spawn,					SHCMD("alacritty -T FoxDot -e foxdot")},
 	// { MODKEY,													XK_t,					spawn,					SHCMD("st -T TidalCycles -e tidalcycles")},
 	{ MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("foxdotkill")},
 	// { MODKEY|ShiftMask,								XK_t,					spawn,					SHCMD("tidalkill")},
-	{ MODKEY,													XK_a,					spawn,					SHCMD("st -T fzfmusic -e fzfmusic")},
+	{ MODKEY,													XK_a,					spawn,					SHCMD("alacritty -T fzfmusic -e fzfmusic")},
 
 	//   ____ _   _ ___
 	//  / ___| | | |_ _|
@@ -250,7 +250,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,								XK_k,					movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_Return,		spawn,          {.v = dmenucmd } },
 	/* { MODKEY,						     	        XK_period,		spawn,   	      SHCMD("tmuxmain") }, */
-	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("st") },
+	{ MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("alacritty") },
 	{ MODKEY,							  	        XK_grave,		  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask, 							XK_z,    		  togglebar,      {0} },
 	{ MODKEY|ShiftMask,         			XK_a,    		  togglegaps,     {0} },
