@@ -255,8 +255,8 @@ static Key keys[] = {
 	/* { MODKEY,						     	        XK_period,		spawn,   	      SHCMD("tmuxmain") }, */
 	// { MODKEY|ShiftMask,		     	      XK_Return,		spawn,   	      SHCMD("st") },
 	{ MODKEY,							  	        XK_grave,		  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY, 							XK_z,    		  togglebar,      {0} },
-	{ MODKEY,         			XK_a,    		  togglegaps,     {0} },
+	{ MODKEY, 							XK_a,    		  togglebar,      {0} },
+	{ MODKEY,         			XK_z,    		  togglegaps,     {0} },
 	/* { MODKEY|Shift,  	  					XK_a,					defaultgaps,    {0} }, */
 	{ MODKEY,								XK_x,					toggleborder,   {0} },
 	{ MODKEY,               	        XK_j,					focusstack,     {.i = +1 } },
