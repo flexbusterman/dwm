@@ -36,6 +36,8 @@ endif
 clean:
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
 	rm -f dwm-msg
+	rm config.h
+	rm patches.h
 
 dist: clean
 	mkdir -p dwm-${VERSION}
@@ -62,6 +64,8 @@ endif
 	mkdir -p ${DESTDIR}${PREFIX}/share/xsessions
 	test -f ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop || cp -n dwm.desktop ${DESTDIR}${PREFIX}/share/xsessions
 	chmod 644 ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
+	rm config.h
+	rm patches.h
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
