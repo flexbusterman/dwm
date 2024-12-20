@@ -3,6 +3,11 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 25;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 25;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 25;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 25;       /* vert outer gap between windows and screen edge */
+static       int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -42,6 +47,8 @@ static const float mfact     = 0.58; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#include "vanitygaps.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -54,7 +61,7 @@ static const Layout layouts[] = {
 #define MODKEY Mod1Mask // Alt key
 #define WINKEY Mod4Mask // Super/Windows key
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
@@ -81,9 +88,28 @@ static const Key keys[] = {
 	{ MODKEY,													XK_minus, 	  incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	// { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+	// { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+	// { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,               	        XK_space,			zoom,           {0} },
+	// { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
+	// { MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
+	// { MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
+	// { MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
+	// { MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
+	// { MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
+	// { MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
+	{ MODKEY,              XK_z,      togglegaps,     {0} },
+	// { MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,						             XK_w,      killclient,     {0} },
 	{ MODKEY,                 	      XK_u,					setlayout,      {.v = &layouts[0]} },
@@ -94,7 +120,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ WINKEY|ControlMask,							XK_k,					focusmon,				{.i = +1 } },
-  { WINKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
+	{ WINKEY|ControlMask,							XK_j,					focusmon,				{.i = -1 } },
 	{ WINKEY|ControlMask|ShiftMask,		XK_k,					tagmon,					{.i = +1 } },
 	{ WINKEY|ControlMask|ShiftMask,		XK_j,					tagmon,					{.i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
