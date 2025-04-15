@@ -131,7 +131,7 @@ static const Key keys[] = {
     {WINKEY, XK_z, togglegaps, {0}},
     // { WINKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
     {WINKEY, XK_Tab, view, {0}},
-    {WINKEY, XK_w, killclient, {0}},
+    {WINKEY | ShiftMask, XK_w, killclient, {0}},
     {WINKEY, XK_u, setlayout, {.v = &layouts[0]}},
     {WINKEY, XK_i, setlayout, {.v = &layouts[1]}},
     {WINKEY | ShiftMask, XK_u, setlayout, {.v = &layouts[2]}},
