@@ -139,10 +139,10 @@ static const Key keys[] = {
     {WINKEY, XK_f, togglefullscr, {0}},
     {WINKEY, XK_0, view, {.ui = ~0}},
     {WINKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
-    {MODKEY | ControlMask, XK_k, focusmon, {.i = +1}},
-    {MODKEY | ControlMask, XK_j, focusmon, {.i = -1}},
-    {MODKEY | ControlMask | ShiftMask, XK_k, tagmon, {.i = +1}},
-    {MODKEY | ControlMask | ShiftMask, XK_j, tagmon, {.i = -1}},
+    {MODKEY | WINKEY, XK_k, focusmon, {.i = +1}},
+    {MODKEY | WINKEY, XK_j, focusmon, {.i = -1}},
+    {MODKEY | WINKEY | ShiftMask, XK_k, tagmon, {.i = +1}},
+    {MODKEY | WINKEY | ShiftMask, XK_j, tagmon, {.i = -1}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){WINKEY | ShiftMask, XK_q, quit, {0}},
