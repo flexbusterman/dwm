@@ -23,8 +23,12 @@ static const int systraypinningfailfirst =
 static const int showsystray = 1; /* 0 means no systray */
 static const int showbar = 1;     /* 0 starts dwm with no bar */
 static const int topbar = 1;      /* 0 means bottom bar */
-static const char *fonts[] = {"Fira Mono Medium:size=12:antialias=true"};
-static const char dmenufont[] = {"Fira Mono Medium:size=12:antialias=true"};
+// static const char *fonts[] = {"Fira Mono Medium:size=12:antialias=true"};
+// static const char dmenufont[] = {"Fira Mono Medium:size=12:antialias=true"};
+static const char *fonts[] = {
+    "BigBlueTerm437 Nerd Font Mono:size=10:antialias=true"};
+static const char dmenufont[] = {
+    "BigBlueTerm437 Nerd Font Mono:size=10:antialias=true"};
 static const char col_black[] = "#000000";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
