@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <X11/cursorfont.h>
+#include <X11/Xcursor/Xcursor.h>
 #include <X11/Xlib.h>
 #include <X11/Xft/Xft.h>
 
@@ -448,17 +450,47 @@ drw_font_getexts(Fnt *font, const char *text, unsigned int len, unsigned int *w,
 		*h = font->h;
 }
 
+// Cur *
+// drw_cur_create(Drw *drw, int shape)
+// {
+// 	Cur *cur;
+//
+// 	if (!drw || !(cur = ecalloc(1, sizeof(Cur))))
+// 		return NULL;
+//
+// 	cur->cursor = XCreateFontCursor(drw->dpy, shape);
+//
+// 	return cur;
+// }
+
 Cur *
 drw_cur_create(Drw *drw, int shape)
 {
-	Cur *cur;
+    Cur *cur = NULL;
+    const char *name = NULL;
 
-	if (!drw || !(cur = ecalloc(1, sizeof(Cur))))
-		return NULL;
+    if (!drw)
+        return NULL;
 
-	cur->cursor = XCreateFontCursor(drw->dpy, shape);
+    /* Map common core cursor shapes to Xcursor theme names */
+    switch (shape) {
+    case XC_left_ptr: name = "left_ptr"; break;
+    case XC_sizing:   name = "sizing";   break;
+    case XC_fleur:    name = "fleur";    break;
+    default:          name = NULL;       break;
+    }
 
-	return cur;
+    cur = ecalloc(1, sizeof(Cur));
+
+    /* Try themed cursor first if we have a name */
+    if (name)
+        cur->cursor = XcursorLibraryLoadCursor(drw->dpy, name);
+
+    /* Fallback to core font cursor if themed load failed */
+    if (!cur->cursor)
+        cur->cursor = XCreateFontCursor(drw->dpy, shape);
+
+    return cur;
 }
 
 void
