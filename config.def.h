@@ -89,7 +89,7 @@ static const Key keys[] = {
 	{ WINKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ WINKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ WINKEY,                       XK_space, zoom,           {0} },
-	{ WINKEY,                       XK_Tab,    view,           {0} },
+	// { WINKEY,                       XK_Tab,    view,           {0} },
 	{ WINKEY,     					        XK_q,      killclient,     {0} },
 	{ WINKEY,                       XK_u,      setlayout,      {.v = &layouts[0]} },
 	{ WINKEY,                       XK_i,      setlayout,      {.v = &layouts[1]} },
