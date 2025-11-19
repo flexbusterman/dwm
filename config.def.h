@@ -91,8 +91,8 @@ static const Key keys[] = {
 	{ WINKEY,                       XK_space, zoom,           {0} },
 	// { WINKEY,                       XK_Tab,    view,           {0} },
 	{ WINKEY,     					        XK_q,      killclient,     {0} },
-	{ WINKEY,                       XK_u,      setlayout,      {.v = &layouts[0]} },
-	{ WINKEY,                       XK_i,      setlayout,      {.v = &layouts[1]} },
+	// { WINKEY,                       XK_u,      setlayout,      {.v = &layouts[0]} },
+	// { WINKEY,                       XK_i,      setlayout,      {.v = &layouts[1]} },
 	{WINKEY, XK_f, togglefullscr, {0}},
 
 	// { WINKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
