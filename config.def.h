@@ -90,7 +90,7 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"kitty -e tmux new-session -A -s main", NULL};
 
 #include "movestack.c"
 static const Key keys[] = {
@@ -111,9 +111,8 @@ static const Key keys[] = {
     {WINKEY, XK_space, zoom, {0}},
     // { WINKEY,                       XK_Tab,    view,           {0} },
     {WINKEY, XK_q, killclient, {0}},
-    // { WINKEY,                       XK_u,      setlayout,      {.v =
-    // &layouts[0]} }, { WINKEY,                       XK_i,      setlayout, {.v
-    // = &layouts[1]} },
+    {WINKEY, XK_u, setlayout, {.v = &layouts[0]}},
+    {WINKEY, XK_i, setlayout, {.v = &layouts[1]}},
     {WINKEY, XK_f, togglefullscr, {0}},
 
     // { WINKEY,                       XK_m,      setlayout,      {.v =
