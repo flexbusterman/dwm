@@ -17,10 +17,12 @@ static const int showbar = 1;     /* 0 means no bar */
 static const int topbar = 1;      /* 0 means bottom bar */
 // static const char *fonts[]          = { "monospace:size=10" };
 static const char *fonts[] = {
-    "BigBlueTerm437 Nerd Font Mono:size=9:antialias=true"};
+    "RobotoMono Nerd Font Mono:style=bold:size=11:antialias=true"};
+// "BigBlueTerm437 Nerd Font Mono:size=9:antialias=true"};
 // static const char dmenufont[]       = "monospace:size=10";
 static const char dmenufont[] = {
-    "BigBlueTerm437 Nerd Font Mono:size=9:antialias=true"};
+    // "BigBlueTerm437 Nerd Font Mono:size=9:antialias=true"};
+    "RobotoMono Nerd Font Mono:style=bold:size=11:antialias=true"};
 static const char col_black[] = "#000000";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
