@@ -91,7 +91,7 @@ enum {
   NetWMWindowTypeDialog,
   NetClientList,
   NetLast
-};                                           /* EWMH atoms */
+}; /* EWMH atoms */
 enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
 enum {
   WMProtocols,
@@ -862,15 +862,28 @@ void drawbar(Monitor *m) {
       urg |= c->tags;
   }
   x = 0;
+  // for (i = 0; i < LENGTH(tags); i++) {
+  //   w = TEXTW(tags[i]);
+  //   drw_setscheme(
+  //       drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel :
+  //       SchemeNorm]);
+  //   drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+  //   if (occ & 1 << i)
+  //     drw_rect(drw, x + boxs, boxs, boxw, boxw,
+  //              m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+  //              urg & 1 << i);
+  //   x += w;
+  // }
+  // modified code to use the SchemeUrgent from config.def.h
   for (i = 0; i < LENGTH(tags); i++) {
     w = TEXTW(tags[i]);
-    drw_setscheme(
-        drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-    drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+    drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel
+                              : urg & 1 << i                 ? SchemeUrgent
+                                                             : SchemeNorm]);
+    drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], 0);
     if (occ & 1 << i)
       drw_rect(drw, x + boxs, boxs, boxw, boxw,
-               m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-               urg & 1 << i);
+               m == selmon && selmon->sel && selmon->sel->tags & 1 << i, 0);
     x += w;
   }
   w = TEXTW(m->ltsymbol);
