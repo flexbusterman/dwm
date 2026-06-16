@@ -23,25 +23,44 @@ static const char *fonts[] = {
 static const char dmenufont[] = {
     // "BigBlueTerm437 Nerd Font Mono:size=9:antialias=true"};
     "RobotoMono Nerd Font Mono:style=bold:size=11:antialias=true"};
-static const char col_black[] = "#000000";
-static const char col_gray1[] = "#222222";
-static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#bbbbbb";
-static const char col_gray4[] = "#eeeeee";
-// static const char col_cyan[] = "#005577";
-static const char col_blue[] = "#005577";
-// static const char col_blue[] = "#000087";
-static const char col_red[] = "#ff0000";
+
+static const char col_black[]  = "#000000";
+static const char col_gray1[]  = "#222222";
+static const char col_gray2[]  = "#444444";
+static const char col_gray3[]  = "#bbbbbb";
+static const char col_gray4[]  = "#eeeeee";
+static const char col_green[]  = "#005f00"; /* tmux colour22 (status-style bg) */
+static const char col_red[]    = "#ff0000";
 static const char col_yellow[] = "#ffff00";
-static const char col_white[] = "#ffffff";
+static const char col_white[]  = "#ffffff";
+
 static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_black},
-    [SchemeSel] = {col_gray4, col_blue, col_blue},
-    [SchemeWarn] = {col_black, col_yellow, col_red},
-    // [SchemeUrgent] = {col_white, col_red, col_red},
+    [SchemeNorm]   = {col_gray3, col_gray1, col_black},
+    [SchemeSel]    = {col_white, col_green, col_green},
+    [SchemeWarn]   = {col_black, col_yellow, col_red},
     [SchemeUrgent] = {col_gray3, col_gray1, col_black},
 };
+
+// static const char col_black[] = "#000000";
+// static const char col_gray1[] = "#222222";
+// static const char col_gray2[] = "#444444";
+// static const char col_gray3[] = "#bbbbbb";
+// static const char col_gray4[] = "#eeeeee";
+// // static const char col_cyan[] = "#005577";
+// static const char col_blue[] = "#005577";
+// // static const char col_blue[] = "#000087";
+// static const char col_red[] = "#ff0000";
+// static const char col_yellow[] = "#ffff00";
+// static const char col_white[] = "#ffffff";
+// static const char *colors[][3] = {
+//     /*               fg         bg         border   */
+//     [SchemeNorm] = {col_gray3, col_gray1, col_black},
+//     [SchemeSel] = {col_gray4, col_blue, col_blue},
+//     [SchemeWarn] = {col_black, col_yellow, col_red},
+//     // [SchemeUrgent] = {col_white, col_red, col_red},
+//     [SchemeUrgent] = {col_gray3, col_gray1, col_black},
+// };
 
 /* tagging */
 static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -94,8 +113,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
-    "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
-    "-nf",       col_gray3, "-sb",    col_blue, "-sf",     col_gray4, NULL};
+    "dmenu_run", "-m",      dmenumon,  "-fn",     dmenufont, "-nb",      col_gray1,
+    "-nf",       col_gray3, "-sb",     col_green, "-sf",     col_gray4,  NULL};
 static const char *termcmd[] = {"kitty -e tmux new-session -A -s main", NULL};
 
 #include "movestack.c"
@@ -131,6 +150,32 @@ static const Key keys[] = {
     {ControlMask | ShiftMask, XK_j, focusmon, {.i = -1}},
     {MODKEY | ControlMask | ShiftMask, XK_k, tagmon, {.i = +1}},
     {MODKEY | ControlMask | ShiftMask, XK_j, tagmon, {.i = -1}},
+
+	{ MODKEY,                         XK_d,       spawn,    SHCMD("typedate") },
+	{ MODKEY|ShiftMask,               XK_d,       spawn,    SHCMD("$TERMINAL -e dwmrebuild") },
+	{ MODKEY,                         XK_g,       spawn,    SHCMD("emptygtrash") },
+	{ MODKEY,                         XK_n,       spawn,    SHCMD("$TERMINAL -e fzfnotes") },
+	{ MODKEY|ShiftMask,               XK_n,       spawn,    SHCMD("$TERMINAL -e fzfgrep") },
+	{ MODKEY,                         XK_o,       spawn,    SHCMD("obsidian") },
+	{ MODKEY|ShiftMask|ControlMask,   XK_p,       spawn,    SHCMD("wmquit -p") },
+	{ MODKEY|ShiftMask,               XK_q,       spawn,    SHCMD("wmquit -q") },
+	{ MODKEY|ShiftMask,               XK_r,       spawn,    SHCMD("pkill sxhkd; sxhkd & notify-send \"sxhkd restarted\"") },
+	{ MODKEY|ShiftMask|ControlMask,   XK_r,       spawn,    SHCMD("wmquit -r") },
+	{ MODKEY,                         XK_t,       spawn,    SHCMD("$TERMINAL -e btop") },
+	{ MODKEY|ShiftMask,               XK_t,       spawn,    SHCMD("$TERMINAL -e htop") },
+	{ MODKEY|ShiftMask,               XK_w,       spawn,    SHCMD("kitty -e fzftodos") },
+	{ MODKEY|ShiftMask,               XK_x,       spawn,    SHCMD("xkill") },
+	{ MODKEY|ShiftMask,               XK_Return,  spawn,    SHCMD("kitty -e tmux new-session -A -s main") },
+	{ MODKEY,                         XK_comma,   spawn,    SHCMD("$TERMINAL -e ranger") },
+	{ MODKEY,                         XK_period,  spawn,    SHCMD("wyeb") },
+	{ MODKEY|ShiftMask,               XK_period,  spawn,    SHCMD("firefox") },
+	{ MODKEY|ShiftMask,               XK_equal,   spawn,    SHCMD("calculate") },
+	{ 0,                              XK_Print,   spawn,    SHCMD("screenshot") },
+	{ ShiftMask,                      XK_Print,   spawn,    SHCMD("screenshot -s") },
+	{ MODKEY,                         XK_Tab,     spawn,    SHCMD("toggleinputlanguagewithtimeout") },
+	{ MODKEY|ShiftMask,               XK_Tab,     spawn,    SHCMD("toggleinputlanguage") },
+
+
     // {MODKEY | MODKEY, XK_k, focusmon, {.i = +1}},
     // {MODKEY | MODKEY, XK_j, focusmon, {.i = -1}},
     // {MODKEY | MODKEY | ShiftMask, XK_k, tagmon, {.i = +1}},
