@@ -1,17 +1,18 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+#include <cstddef>
 static const unsigned int borderpx = 3; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int systraypinning =
-    0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor
-                                    X */
+0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor
+      X */
 static const unsigned int systrayonleft =
-    0; /* 0: systray in the right corner, >0: systray on left of status text */
+0; /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int systraypinningfailfirst =
-    1; /* 1: if pinning fails, display systray on the first monitor, False:
-                                    display systray on the last monitor*/
+1; /* 1: if pinning fails, display systray on the first monitor, False:
+      display systray on the last monitor*/
 static const int showsystray = 1; /* 0 means no systray */
 static const int showbar = 1;     /* 0 means no bar */
 static const int topbar = 1;      /* 0 means bottom bar */
@@ -22,7 +23,7 @@ static const char *fonts[] = {
 // static const char dmenufont[]       = "monospace:size=10";
 static const char dmenufont[] = {
     // "BigBlueTerm437 Nerd Font Mono:size=9:antialias=true"};
-    "RobotoMono Nerd Font Mono:style=bold:size=11:antialias=true"};
+"RobotoMono Nerd Font Mono:style=bold:size=11:antialias=true"};
 static const char col_black[] = "#000000";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
@@ -61,11 +62,11 @@ static const Rule rules[] = {
 static const float mfact = 0.58; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
-    1; /* 1 means respect size hints in tiled resizals */
+1; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen =
-    1; /* 1 will force focus on the fullscreen window */
+1; /* 1 will force focus on the fullscreen window */
 static const int refreshrate =
-    120; /* refresh rate (per second) for client move/resize */
+120; /* refresh rate (per second) for client move/resize */
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
@@ -79,20 +80,20 @@ static const Layout layouts[] = {
 #define WINKEY Mod4Mask
 
 #define TAGKEYS(KEY, TAG)                                                      \
-  {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
-      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
-      {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
+{MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
+{MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+{MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
+{MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd)                                                             \
-  {                                                                            \
+{                                                                            \
     .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
-  }
+}
 
 /* commands */
 static char dmenumon[2] =
-    "0"; /* component of dmenucmd, manipulated in spawn() */
+"0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_blue, "-sf",     col_gray4, NULL};
@@ -116,7 +117,7 @@ static const Key keys[] = {
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
     {MODKEY, XK_space, zoom, {0}},
     // { MODKEY,                       XK_Tab,    view,           {0} },
-    {MODKEY, XK_q, killclient, {0}},
+    {MODKEY, XK_q, spawn, SHCMD("closewindow || dwm-msg run_command killclient 0")},
     {MODKEY, XK_u, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_i, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_f, togglefullscr, {0}},
@@ -137,8 +138,8 @@ static const Key keys[] = {
     // {MODKEY | MODKEY | ShiftMask, XK_j, tagmon, {.i = -1}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8)
-    // { MODKEY|ShiftMask,             XK_q,      quit,           {0} }
+        TAGKEYS(XK_9, 8)
+        // { MODKEY|ShiftMask,             XK_q,      quit,           {0} }
 };
 
 /* button definitions */
@@ -162,19 +163,19 @@ static const Button buttons[] = {
 
 static const char *ipcsockpath = "/tmp/dwm.sock";
 static IPCCommand ipccommands[] = {
-  IPCCOMMAND(  view,                1,      {ARG_TYPE_UINT}   ),
-  IPCCOMMAND(  toggleview,          1,      {ARG_TYPE_UINT}   ),
-  IPCCOMMAND(  tag,                 1,      {ARG_TYPE_UINT}   ),
-  IPCCOMMAND(  toggletag,           1,      {ARG_TYPE_UINT}   ),
-  IPCCOMMAND(  tagmon,              1,      {ARG_TYPE_UINT}   ),
-  IPCCOMMAND(  focusmon,            1,      {ARG_TYPE_SINT}   ),
-  IPCCOMMAND(  focusstack,          1,      {ARG_TYPE_SINT}   ),
-  IPCCOMMAND(  zoom,                1,      {ARG_TYPE_NONE}   ),
-  IPCCOMMAND(  incnmaster,          1,      {ARG_TYPE_SINT}   ),
-  IPCCOMMAND(  killclient,          1,      {ARG_TYPE_SINT}   ),
-  IPCCOMMAND(  togglefloating,      1,      {ARG_TYPE_NONE}   ),
-  IPCCOMMAND(  setmfact,            1,      {ARG_TYPE_FLOAT}  ),
-  IPCCOMMAND(  setlayoutsafe,       1,      {ARG_TYPE_PTR}    ),
-  IPCCOMMAND(  quit,                1,      {ARG_TYPE_NONE}   )
+    IPCCOMMAND(  view,                1,      {ARG_TYPE_UINT}   ),
+    IPCCOMMAND(  toggleview,          1,      {ARG_TYPE_UINT}   ),
+    IPCCOMMAND(  tag,                 1,      {ARG_TYPE_UINT}   ),
+    IPCCOMMAND(  toggletag,           1,      {ARG_TYPE_UINT}   ),
+    IPCCOMMAND(  tagmon,              1,      {ARG_TYPE_UINT}   ),
+    IPCCOMMAND(  focusmon,            1,      {ARG_TYPE_SINT}   ),
+    IPCCOMMAND(  focusstack,          1,      {ARG_TYPE_SINT}   ),
+    IPCCOMMAND(  zoom,                1,      {ARG_TYPE_NONE}   ),
+    IPCCOMMAND(  incnmaster,          1,      {ARG_TYPE_SINT}   ),
+    IPCCOMMAND(  killclient,          1,      {ARG_TYPE_SINT}   ),
+    IPCCOMMAND(  togglefloating,      1,      {ARG_TYPE_NONE}   ),
+    IPCCOMMAND(  setmfact,            1,      {ARG_TYPE_FLOAT}  ),
+    IPCCOMMAND(  setlayoutsafe,       1,      {ARG_TYPE_PTR}    ),
+    IPCCOMMAND(  quit,                1,      {ARG_TYPE_NONE}   )
 };
 
