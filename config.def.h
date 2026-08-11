@@ -99,11 +99,19 @@ static const char *dmenucmd[] = {
     "-nf",       col_gray3, "-sb",    col_blue, "-sf",     col_gray4, NULL};
 static const char *termcmd[] = {"kitty -e tmux new-session -A -s main", NULL};
 
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "kitty", "--title", scratchpadname,
+    "-o", "remember_window_size=no",
+    "-o", "initial_window_width=120c",
+    "-o", "initial_window_height=34c",
+    NULL };
+
 #include "movestack.c"
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_Return, spawn, {.v = dmenucmd}},
     // {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+    { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
     {MODKEY, XK_a, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
