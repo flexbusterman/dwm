@@ -51,11 +51,11 @@ static const Rule rules[] = {
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      instance    title       tags mask     isfloating   monitor */
-    {"Gimp", NULL, NULL, 0, 0, -1},
-    // { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-    {"VirtualBox Machine", NULL, NULL, 1 << 8, 0, -1},
-};
+    /* class      instance    title       tags mask     isfloating   monitor   ignoretransient */
+    {"Gimp", NULL, NULL, 0, 0, -1, 0},
+    // { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,       0 },
+    {"VirtualBox Machine", NULL, NULL, 1 << 8, 0, -1, 0},
+    {"REAPER", "REAPER", NULL, 0, 0, -1, 1}};
 
 /* layout(s) */
 static const float mfact = 0.58; /* factor of master area size [0.05..0.95] */

@@ -152,6 +152,7 @@ struct Client {
   int bw, oldbw;
   unsigned int tags;
   int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+  int ignoretransient;
   Client *next;
   Client *snext;
   Monitor *mon;
@@ -202,6 +203,7 @@ typedef struct {
   const char *title;
   unsigned int tags;
   int isfloating;
+  int ignoretransient;
   int monitor;
 } Rule;
 
@@ -403,6 +405,7 @@ void applyrules(Client *c) {
       (!r->class || strstr(class, r->class)) &&
       (!r->instance || strstr(instance, r->instance))) {
       c->isfloating = r->isfloating;
+      c->ignoretransient = r->ignoretransient;
       c->tags |= r->tags;
       for (m = mons; m && m->num != r->monitor; m = m->next)
         ;
@@ -1261,12 +1264,11 @@ void manage(Window w, XWindowAttributes *wa) {
   c->oldbw = wa->border_width;
 
   updatetitle(c);
+  c->mon = selmon;
+  applyrules(c);
   if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {
     c->mon = t->mon;
     c->tags = t->tags;
-  } else {
-    c->mon = selmon;
-    applyrules(c);
   }
 
   if (c->x + WIDTH(c) > c->mon->wx + c->mon->ww)
@@ -1298,7 +1300,8 @@ void manage(Window w, XWindowAttributes *wa) {
                StructureNotifyMask);
   grabbuttons(c, 0);
   if (!c->isfloating)
-    c->isfloating = c->oldstate = trans != None || c->isfixed;
+    c->isfloating = c->oldstate =
+      (!c->ignoretransient && trans != None) || c->isfixed;
   if (c->isfloating)
     XRaiseWindow(dpy, c->win);
   attach(c);
@@ -1465,7 +1468,7 @@ void propertynotify(XEvent *e) {
       default:
         break;
       case XA_WM_TRANSIENT_FOR:
-        if (!c->isfloating && (XGetTransientForHint(dpy, c->win, &trans)) &&
+        if (!c->ignoretransient && !c->isfloating && (XGetTransientForHint(dpy, c->win, &trans)) &&
           (c->isfloating = (wintoclient(trans)) != NULL))
           arrange(c->mon);
         break;
