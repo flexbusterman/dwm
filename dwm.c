@@ -1468,9 +1468,15 @@ void propertynotify(XEvent *e) {
       default:
         break;
       case XA_WM_TRANSIENT_FOR:
+        applyrules(c);
         if (!c->ignoretransient && !c->isfloating && (XGetTransientForHint(dpy, c->win, &trans)) &&
-          (c->isfloating = (wintoclient(trans)) != NULL))
+          (c->isfloating = (wintoclient(trans)) != NULL)) {
           arrange(c->mon);
+        } else if (c->ignoretransient && c->isfloating &&
+          XGetTransientForHint(dpy, c->win, &trans) && wintoclient(trans)) {
+          c->isfloating = 0;
+          arrange(c->mon);
+        }
         break;
       case XA_WM_NORMAL_HINTS:
         c->hintsvalid = 0;
@@ -1482,8 +1488,12 @@ void propertynotify(XEvent *e) {
     }
     if (ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName]) {
       updatetitle(c);
-      if (c == c->mon->sel)
-        drawbar(c->mon);
+      {
+        int wasfloating = c->isfloating;
+        applyrules(c);
+        if (wasfloating != c->isfloating)
+          arrange(c->mon);
+      }
     }
     if (ev->atom == netatom[NetWMWindowType])
       updatewindowtype(c);

@@ -55,7 +55,7 @@ static const Rule rules[] = {
     {"Gimp", NULL, NULL, 0, 0, -1, 0},
     // { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,       0 },
     {"VirtualBox Machine", NULL, NULL, 1 << 8, 0, -1, 0},
-    {"REAPER", "REAPER", NULL, 0, 0, -1, 1}};
+    {"REAPER", "REAPER", "MIDI take", 0, 0, -1, 1}};
 
 /* layout(s) */
 static const float mfact = 0.58; /* factor of master area size [0.05..0.95] */
